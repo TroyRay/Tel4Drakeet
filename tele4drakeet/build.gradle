@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 repositories {
     mavenCentral()
 }
@@ -34,10 +38,37 @@ android {
 
     buildTypes {
         release {
+            shrinkResources false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled false
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        File outputDirectory = new File(outputFile.parent);
+                        def fileName = "TelByDrakeet_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputDirectory, fileName)
+                    }
+                }
+            }
+            signingConfig signingConfigs.release
         }
+
+        productFlavors {
+            drakeet{
+                resValue "string", "AppName", "Tel4Drakeet"
+            }
+            jin{
+                resValue "string", "AppName", "Tel4金元宝"
+            }
+            teleet {
+                resValue "string", "AppName", "Teleet"
+            }
+        }
+
     }
+
+
 }
 
 dependencies {

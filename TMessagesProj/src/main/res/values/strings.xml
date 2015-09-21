@@ -3,7 +3,7 @@
 
 
 <resources>
-    <string name="AppName">Teleet</string>
+    <string name="AppName">Tel4Drakeet</string>
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish">English</string>
     <string name="LanguageCode">en</string>
