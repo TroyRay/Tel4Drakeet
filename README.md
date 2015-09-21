@@ -2,6 +2,8 @@
 
 * 修改 超过1条未读消息时候，通知（包括浮动通知）的消息不再只显示 x new messages，而是直接在通知中显示消息内容。 
 * 增加 类似微信的习惯，打开表情栏的时候，点击上面的聊天区域，自动关闭表情栏。
+* 修改了包名，可以和原版同时安装同时存在（虽然没有必要。telegram 会自动同步所有内容）
+
 
 因为官方限制，所以我们开发的 telegram 不能叫做 telegram（*Please don't use the word Telegram in the title of your app.*）。
 
