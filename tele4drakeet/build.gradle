@@ -55,10 +55,10 @@ android {
         }
 
         productFlavors {
-            drakeet{
+            drakeet {
                 resValue "string", "AppName", "Tel4Drakeet"
             }
-            jin{
+            jin {
                 resValue "string", "AppName", "Tel4金元宝"
             }
             teleet {
