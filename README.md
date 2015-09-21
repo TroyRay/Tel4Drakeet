@@ -1,4 +1,4 @@
-我稍微修改的 telegram 版本：
+我稍微修改的 telegram 版本（Fork from [DrKLO/Telegram](https://github.com/DrKLO/Telegram)）：
 
 * 增加 类似微信的习惯，打开表情栏的时候，如果点击上面的聊天区域，能够自动回缩关闭表情栏。
 * 修改 当超过1条的未读消息时候，通知（包括浮动通知）的消息预览不再是显示「x new messages」，而是直接在 content 中显示消息内容。（No "x new messages" in notification, show all the preview messages  content / summary in notification including head up.）
