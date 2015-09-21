@@ -5,7 +5,7 @@
 
 telegram 需要翻墙，初次启动它会同步下来所有聊天记录，所以这时候有可能比较卡，之后就好了。
 
-Release：https://github.com/drakeet/Telegram/releases/tag/d1.1
+Release：https://github.com/drakeet/Tel4Drakeet/releases
 
 因为官方限制，所以我们开发的 telegram 不能叫做 telegram（「*Please don't use the word Telegram in the title of your app.*」），所以我改名叫 `Teleet`，我自己的是 `Tel4Drakeet`，哈哈哈！
 
