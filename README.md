@@ -1,15 +1,19 @@
 我稍微修改的 telegram 版本（Fork from [DrKLO/Telegram](https://github.com/DrKLO/Telegram)）：
 
-* 增加 类似微信的习惯，打开表情栏的时候，如果点击上面的聊天区域，能够自动回缩关闭表情栏。
-* 修改 当超过1条的未读消息时候，通知（包括浮动通知）的消息预览不再是显示「x new messages」，而是直接在 content 中显示消息内容。（No "x new messages" in notification, show all the preview messages  content / summary in notification including head up.）
+* 修改 超过1条未读消息时候，通知（包括浮动通知）的消息不再只显示 x new messages，而是直接在通知中显示消息内容。 
+* 增加 类似微信的习惯，打开表情栏的时候，点击上面的聊天区域，自动关闭表情栏。
+
+因为官方限制，所以我们开发的 telegram 不能叫做 telegram（*Please don't use the word Telegram in the title of your app.*）。
 
 telegram 需要翻墙，初次启动它会同步下来所有聊天记录，所以这时候有可能比较卡，之后就好了。
 
-Release：https://github.com/drakeet/Tel4Drakeet/releases
+下载：https://github.com/drakeet/Tel4Drakeet/releases
 
-因为官方限制，所以我们开发的 telegram 不能叫做 telegram（「*Please don't use the word Telegram in the title of your app.*」），所以我改名叫 `Teleet`，我自己的是 `Tel4Drakeet`，哈哈哈！
+其中 `Teleet` 是大众版，`Tel4Drakeet` 是我个人版，二者几乎完全没有区别，除了 App 名字不一样。
 
---------------
+
+---
+
 ## Telegram messenger for Android
 
 [Telegram](http://telegram.org) is a messaging app with a focus on speed and security. It’s superfast, simple and free.
