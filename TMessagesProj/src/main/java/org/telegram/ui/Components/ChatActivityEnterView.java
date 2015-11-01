@@ -1225,13 +1225,16 @@ public class ChatActivityEnterView extends FrameLayoutFixed
             if (botReplyMarkup != null) {
                 if (isPopupShowing() && currentPopupContentType == 1) {
                     atButton.setImageResource(R.drawable.ic_msg_panel_kb);
-                } else {
+                }
+                else {
                     atButton.setImageResource(R.drawable.at_keyboard2);
                 }
-            } else {
+            }
+            else {
                 atButton.setImageResource(R.drawable.bot_keyboard_at);
             }
-        } else {
+        }
+        else {
             atButton.setVisibility(GONE);
         }
 
@@ -1243,8 +1246,12 @@ public class ChatActivityEnterView extends FrameLayoutFixed
 
     public void setBotsCount(int count, boolean hasCommands) {
         botCount = count;
-        if (isGroupChat != hasCommands) {
-            isGroupChat = hasCommands;
+    }
+
+
+    public void setIsGroupChat(boolean is) {
+        if (isGroupChat != is) {
+            isGroupChat = is;
             updateBotButton();
         }
     }

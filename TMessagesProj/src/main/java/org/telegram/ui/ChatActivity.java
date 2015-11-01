@@ -251,6 +251,7 @@ public class ChatActivity extends BaseFragment
     private MessageObject botReplyButtons;
     private int botsCount;
     private boolean hasBotsCommands;
+    private boolean mIsGroupChat;
 
     private CharSequence lastPrintString;
     private String lastStatus;
@@ -1740,6 +1741,7 @@ public class ChatActivity extends BaseFragment
         chatActivityEnterView.addToAttachLayout(menuItem);
         chatActivityEnterView.setId(id_chat_compose_panel);
         chatActivityEnterView.setBotsCount(botsCount, hasBotsCommands);
+        chatActivityEnterView.setIsGroupChat(mIsGroupChat);
         contentView.addView(chatActivityEnterView,
                 LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM));
         chatActivityEnterView.setDelegate(new ChatActivityEnterView.ChatActivityEnterViewDelegate() {
@@ -3200,6 +3202,7 @@ public class ChatActivity extends BaseFragment
                     }
                     else {
                         onlineTextView.setText(LocaleController.formatPluralString("Members", count));
+                        mIsGroupChat = true;
                     }
                 }
             }
