@@ -75,7 +75,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     private LinearLayout slideText;
     private SizeNotifierFrameLayout sizeNotifierLayout;
     private LinearLayout attachButton;
-    private ImageView botButton;
+    private ImageView atButton;
     private LinearLayout textFieldContainer;
     private View topView;
     private PopupWindow botKeyboardPopup;
@@ -324,27 +324,32 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
             ViewProxy.setPivotX(attachButton, AndroidUtilities.dp(48));
             frameLayout.addView(attachButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.RIGHT));
 
-            botButton = new ImageView(context);
-            botButton.setImageResource(R.drawable.bot_keyboard2);
-            botButton.setScaleType(ImageView.ScaleType.CENTER);
-            botButton.setVisibility(GONE);
-            attachButton.addView(botButton, LayoutHelper.createLinear(48, 48));
-            botButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            atButton = new ImageView(context);
+            atButton.setImageResource(R.drawable.bot_keyboard2);
+            atButton.setScaleType(ImageView.ScaleType.CENTER);
+            atButton.setVisibility(GONE);
+            attachButton.addView(atButton, LayoutHelper.createLinear(48, 48));
+            atButton.setOnClickListener(new OnClickListener() {
+                @Override public void onClick(View v) {
                     if (botReplyMarkup != null) {
                         if (!isPopupShowing() || currentPopupContentType != 1) {
                             showPopup(1, 1);
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                            SharedPreferences preferences =
+                                    ApplicationLoader.applicationContext.getSharedPreferences("mainconfig",
+                                            Activity.MODE_PRIVATE);
                             preferences.edit().remove("hidekeyboard_" + dialog_id).commit();
-                        } else {
+                        }
+                        else {
                             if (currentPopupContentType == 1 && botButtonsMessageObject != null) {
-                                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                                SharedPreferences preferences =
+                                        ApplicationLoader.applicationContext.getSharedPreferences("mainconfig",
+                                                Activity.MODE_PRIVATE);
                                 preferences.edit().putInt("hidekeyboard_" + dialog_id, botButtonsMessageObject.getId()).commit();
                             }
                             openKeyboardInternal();
                         }
-                    } else if (hasBotCommands) {
+                    }
+                    else if (hasBotCommands) {
                         setFieldText("@");
                         openKeyboard();
                     }
@@ -936,14 +941,14 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
         }
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) messageEditText.getLayoutParams();
         if (attachVisible == 1) {
-            if (botButton != null && botButton.getVisibility() == VISIBLE) {
+            if (atButton != null && atButton.getVisibility() == VISIBLE) {
                 layoutParams.rightMargin = AndroidUtilities.dp(98);
             } else {
                 layoutParams.rightMargin = AndroidUtilities.dp(50);
             }
         } else if (attachVisible == 2) {
             if (layoutParams.rightMargin != AndroidUtilities.dp(2)) {
-                if (botButton != null && botButton.getVisibility() == VISIBLE) {
+                if (atButton != null && atButton.getVisibility() == VISIBLE) {
                     layoutParams.rightMargin = AndroidUtilities.dp(98);
                 } else {
                     layoutParams.rightMargin = AndroidUtilities.dp(50);
@@ -1133,27 +1138,27 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     }
 
     private void updateBotButton() {
-        if (botButton == null) {
+        if (atButton == null) {
             return;
         }
         if (hasBotCommands || botReplyMarkup != null) {
-            if (botButton.getVisibility() != VISIBLE) {
-                botButton.setVisibility(VISIBLE);
+            if (atButton.getVisibility() != VISIBLE) {
+                atButton.setVisibility(VISIBLE);
             }
             if (botReplyMarkup != null) {
                 if (isPopupShowing() && currentPopupContentType == 1) {
-                    botButton.setImageResource(R.drawable.ic_msg_panel_kb);
+                    atButton.setImageResource(R.drawable.ic_msg_panel_kb);
                 } else {
-                    botButton.setImageResource(R.drawable.bot_keyboard2);
+                    atButton.setImageResource(R.drawable.bot_keyboard2);
                 }
             } else {
-                botButton.setImageResource(R.drawable.bot_keyboard_at);
+                atButton.setImageResource(R.drawable.bot_keyboard_at);
             }
         } else {
-            botButton.setVisibility(GONE);
+            atButton.setVisibility(GONE);
         }
         updateFieldRight(2);
-        ViewProxy.setPivotX(attachButton, AndroidUtilities.dp(botButton.getVisibility() == GONE ? 48 : 96));
+        ViewProxy.setPivotX(attachButton, AndroidUtilities.dp(atButton.getVisibility() == GONE ? 48 : 96));
         attachButton.clearAnimation();
     }
 
@@ -1174,7 +1179,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
             botMessageObject = messageObject;
             return;
         }
-        if (botButton == null || botButtonsMessageObject != null && botButtonsMessageObject == messageObject || botButtonsMessageObject == null && messageObject == null) {
+        if (atButton == null || botButtonsMessageObject != null && botButtonsMessageObject == messageObject || botButtonsMessageObject == null && messageObject == null) {
             return;
         }
         if (botKeyboardView == null) {
