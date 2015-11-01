@@ -347,7 +347,6 @@ public class ChatActivityEnterView extends FrameLayoutFixed
             atButton = new ImageView(context);
             atButton.setImageResource(R.drawable.bot_keyboard2);
             atButton.setScaleType(ImageView.ScaleType.CENTER);
-            atButton.setVisibility(GONE);
             attachButton.addView(atButton, LayoutHelper.createLinear(48, 48));
             atButton.setOnClickListener(new OnClickListener() {
                 @Override public void onClick(View v) {
