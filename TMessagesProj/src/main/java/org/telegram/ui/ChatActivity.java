@@ -1615,7 +1615,7 @@ public class ChatActivity extends BaseFragment
                                 FrameLayout.LayoutParams layoutParams3 =
                                         (FrameLayout.LayoutParams) mentionListView.getLayoutParams();
                                 int height =
-                                        56 * Math.min(3, mentionsAdapter.getCount()) + (mentionsAdapter.getCount() > 3 ? 18 : 0);
+                                        64 * Math.min(3, mentionsAdapter.getCount()) + (mentionsAdapter.getCount() > 3 ? 18 : 0);
                                 layoutParams3.height = AndroidUtilities.dp(2 + height);
                                 layoutParams3.topMargin = -AndroidUtilities.dp(height);
                                 mentionListView.setLayoutParams(layoutParams3);
