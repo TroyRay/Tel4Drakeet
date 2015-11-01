@@ -345,7 +345,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
                             openKeyboardInternal();
                         }
                     } else if (hasBotCommands) {
-                        setFieldText("/");
+                        setFieldText("@");
                         openKeyboard();
                     }
                 }
@@ -1147,7 +1147,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
                     botButton.setImageResource(R.drawable.bot_keyboard2);
                 }
             } else {
-                botButton.setImageResource(R.drawable.bot_keyboard);
+                botButton.setImageResource(R.drawable.bot_keyboard_at);
             }
         } else {
             botButton.setVisibility(GONE);
