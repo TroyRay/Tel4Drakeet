@@ -524,6 +524,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed
         ViewProxy.setAlpha(sendButton, 0.0f);
         sendButton.clearAnimation();
         frameLayout1.addView(sendButton, LayoutHelper.createFrame(48, 48));
+        //frameLayout1.addView(atButton, LayoutHelper.createFrame(48, 48));
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 sendMessage();
