@@ -95,7 +95,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed
     private MessageObject botButtonsMessageObject;
     private TLRPC.TL_replyKeyboardMarkup botReplyMarkup;
     private int botCount;
-    private boolean hasBotCommands;
+    private boolean isGroupChat;
 
     private PowerManager.WakeLock mWakeLock;
     private AnimatorSetProxy runningAnimation;
@@ -345,8 +345,9 @@ public class ChatActivityEnterView extends FrameLayoutFixed
                     LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.RIGHT));
 
             atButton = new ImageView(context);
-            atButton.setImageResource(R.drawable.bot_keyboard2);
+            atButton.setImageResource(R.drawable.bot_keyboard_at);
             atButton.setScaleType(ImageView.ScaleType.CENTER);
+            atButton.setVisibility(GONE);
             attachButton.addView(atButton, LayoutHelper.createLinear(48, 48));
             atButton.setOnClickListener(new OnClickListener() {
                 @Override public void onClick(View v) {
@@ -368,7 +369,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed
                             openKeyboardInternal();
                         }
                     }
-                    else if (hasBotCommands) {
+                    else if (isGroupChat) {
                         setFieldText("@");
                         openKeyboard();
                     }
@@ -1217,19 +1218,21 @@ public class ChatActivityEnterView extends FrameLayoutFixed
         if (atButton == null) {
             return;
         }
-        if (atButton.getVisibility() != VISIBLE) {
-            atButton.setVisibility(VISIBLE);
-        }
-        if (botReplyMarkup != null) {
-            if (isPopupShowing() && currentPopupContentType == 1) {
-                atButton.setImageResource(R.drawable.ic_msg_panel_kb);
+        if (isGroupChat || botReplyMarkup != null) {
+            if (atButton.getVisibility() != VISIBLE) {
+                atButton.setVisibility(VISIBLE);
             }
-            else {
-                atButton.setImageResource(R.drawable.bot_keyboard2);
+            if (botReplyMarkup != null) {
+                if (isPopupShowing() && currentPopupContentType == 1) {
+                    atButton.setImageResource(R.drawable.ic_msg_panel_kb);
+                } else {
+                    atButton.setImageResource(R.drawable.at_keyboard2);
+                }
+            } else {
+                atButton.setImageResource(R.drawable.bot_keyboard_at);
             }
-        }
-        else {
-            atButton.setImageResource(R.drawable.bot_keyboard_at);
+        } else {
+            atButton.setVisibility(GONE);
         }
 
         updateFieldRight(2);
@@ -1240,8 +1243,8 @@ public class ChatActivityEnterView extends FrameLayoutFixed
 
     public void setBotsCount(int count, boolean hasCommands) {
         botCount = count;
-        if (hasBotCommands != hasCommands) {
-            hasBotCommands = hasCommands;
+        if (isGroupChat != hasCommands) {
+            isGroupChat = hasCommands;
             updateBotButton();
         }
     }
