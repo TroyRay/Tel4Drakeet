@@ -30,29 +30,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
+import java.util.Locale;
 import org.telegram.android.AndroidUtilities;
+import org.telegram.android.AnimationCompat.AnimatorListenerAdapterProxy;
+import org.telegram.android.AnimationCompat.AnimatorSetProxy;
+import org.telegram.android.AnimationCompat.ObjectAnimatorProxy;
+import org.telegram.android.AnimationCompat.ViewProxy;
 import org.telegram.android.Emoji;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MediaController;
 import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.android.AnimationCompat.AnimatorListenerAdapterProxy;
-import org.telegram.android.AnimationCompat.AnimatorSetProxy;
-import org.telegram.android.AnimationCompat.ObjectAnimatorProxy;
-import org.telegram.android.AnimationCompat.ViewProxy;
-import org.telegram.messenger.ApplicationLoader;
-
-import java.util.Locale;
 
 public class ChatActivityEnterView extends FrameLayoutFixed
         implements NotificationCenter.NotificationCenterDelegate, SizeNotifierFrameLayout.SizeNotifierFrameLayoutDelegate {
@@ -371,7 +369,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed
                     }
                     else if (isGroupChat) {
                         setFieldText("@");
-                        openKeyboard();
+                        openEnKeyboard();
                     }
                 }
             });
@@ -1487,6 +1485,12 @@ public class ChatActivityEnterView extends FrameLayoutFixed
 
 
     public void openKeyboard() {
+        AndroidUtilities.showKeyboard(messageEditText);
+    }
+
+
+    public void openEnKeyboard() {
+        // who can help me to switch keyboard to En layout.
         AndroidUtilities.showKeyboard(messageEditText);
     }
 
