@@ -8,7 +8,7 @@
 
 
 
-因为官方限制，所以我们开发的 telegram 不能叫做 telegram（*Please don't use the word Telegram in the title of your app.*）。
+基于官方 v3.1.3 版本的分支开发。因为官方限制，所以我们开发的 telegram 不能叫做 telegram（*Please don't use the word Telegram in the title of your app.*）。
 
 telegram 需要翻墙，初次启动它会同步下来所有聊天记录，所以这时候有可能比较卡，之后就好了。
 
@@ -16,7 +16,6 @@ telegram 需要翻墙，初次启动它会同步下来所有聊天记录，所�
 
 其中 `Teleet` 是大众版，`Tel4Drakeet` 是我个人版，二者几乎完全没有区别，除了 App 名字不一样。
 
-注：因为原作者不接受 PR，所以为了记录 commits，我采用了新开项目代替直接 fork 方式。
 
 ---
 
